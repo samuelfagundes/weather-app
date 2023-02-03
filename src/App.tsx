@@ -13,6 +13,7 @@ import {
   Weather,
 } from "./styles/pages/home";
 import { Gear } from "phosphor-react";
+import { SearchBar } from "./components/SearchBar";
 
 interface Weather {
   current: {
@@ -93,6 +94,7 @@ export function App() {
         </Popover.Content>
       </Popover.Root>
       <Box>
+        <SearchBar />
         <Location>
           {weatherInfo ? (
             <h2>
@@ -114,7 +116,7 @@ export function App() {
           </div>
           <h3>Humidity: {weatherInfo?.current.humidity}%</h3>
           {windNotation ? (
-            <h3>Wind speed: {weatherInfo?.current.wind_mph}mi/h</h3>
+            <h3>Wind speed: {weatherInfo?.current.wind_mph}mph</h3>
           ) : (
             <h3>Wind speed: {weatherInfo?.current.wind_kph}km/h</h3>
           )}
