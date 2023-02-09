@@ -53,6 +53,17 @@ export function App() {
     });
   }, []);
 
+  function getSearchResults(searchResult: string) {
+    api
+      .get(
+        `/current.json?key=${import.meta.env.VITE_API_KEY}&q=
+            ${searchResult}`
+      )
+      .then((response) => {
+        setWeatherInfo(response.data);
+      });
+  }
+
   function handleChangeTempNotation() {
     setTempNotation(!tempNotation);
     console.log("temp: " + tempNotation);
@@ -94,7 +105,7 @@ export function App() {
         </Popover.Content>
       </Popover.Root>
       <Box>
-        <SearchBar />
+        <SearchBar getSearchResults={getSearchResults} />
         <Location>
           {weatherInfo ? (
             <h2>
